@@ -1,4 +1,7 @@
 <?php
+
+namespace JotFormAPI;
+
 /**
  * JotForm API - PHP Client
  *
@@ -37,15 +40,15 @@ class JotForm {
 
     private function _debugLog($str) {
         if ($this->debugMode){
-            print_r(PHP_EOL);
             print_r($str);
+            print_r(PHP_EOL);
         }
     }
 
     private function _debugDump($obj) {
         if ($this->debugMode){
-            print_r(PHP_EOL);
             var_dump($obj);
+            print_r(PHP_EOL);
         }
     }
 
@@ -98,7 +101,7 @@ class JotForm {
         $result = curl_exec($ch);
 
         if ($result == false) {
-            throw new Exception(curl_error($ch), 400);
+            throw new \Exception(curl_error($ch), 400);
         }
 
         $http_status = curl_getinfo($ch, CURLINFO_HTTP_CODE);
@@ -650,4 +653,4 @@ class JotForm {
     }
 }
 
-class JotFormException extends Exception{}
+class JotFormException extends \Exception { }
